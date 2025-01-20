@@ -1,0 +1,129 @@
+---
+import { Icon } from 'astro-icon/components'
+import Image from 'astro/components/Image.astro'
+import card from '../../images/card.png'
+import scalable from '../../images/scalable.png'
+import scroll from '../../images/scroll.png'
+import Badges from './Badges.astro'
+import Button from './Button.astro'
+import Card from './Card.astro'
+
+const badges = [
+  {
+    text: 'HTML',
+    icon: 'html'
+  },
+  {
+    text: 'CSS',
+    icon: 'css'
+  },
+  {
+    text: 'Javascript',
+    icon: 'javascript'
+  },
+  {
+    text: 'PHP',
+    icon: 'php'
+  },
+  {
+    text: 'Wordpress',
+    icon: 'wordpress'
+  }
+]
+---
+
+<div class="project-card">
+  <Card variant="primary">
+    <Image src={scalable} alt="scalable" width={300} height={300} />
+    <h3>scalable</h3>
+
+    <div class="card-badges">
+      {
+        badges.map((badge) => (
+          <Badges variant="secondary" text={badge.text}>
+            <Icon name={badge.icon} slot="icon" size={24} />
+          </Badges>
+        ))
+      }
+    </div>
+    <div class="card-buttons">
+      <Button text="Code" href="#" variant="secondary">
+        <Icon name="github" slot="icon" />
+      </Button>
+      <Button text="Preview" href="#" variant="secondary">
+        <Icon name="link" slot="icon" />
+      </Button>
+    </div>
+  </Card>
+
+  <Card variant="primary">
+    <Image src={card} alt="card" width={300} height={300} />
+    <h3>Web component card</h3>
+
+    <div class="card-badges">
+      {
+        badges.map((badge) => (
+          <Badges variant="secondary" text={badge.text}>
+            <Icon name={badge.icon} slot="icon" size={24} />
+          </Badges>
+        ))
+      }
+    </div>
+    <div class="card-buttons">
+      <Button text="Code" href="#" variant="secondary">
+        <Icon name="github" slot="icon" />
+      </Button>
+      <Button text="Preview" href="#" variant="secondary">
+        <Icon name="link" slot="icon" />
+      </Button>
+    </div>
+  </Card>
+
+  <Card variant="primary">
+    <Image src={scroll} alt="scroll" width={300} height={300} />
+    <h3>scroll</h3>
+
+    <div class="card-badges">
+      {
+        badges.map((badge) => (
+          <Badges variant="secondary" text={badge.text}>
+            <Icon name={badge.icon} slot="icon" size={24} />
+          </Badges>
+        ))
+      }
+    </div>
+    <div class="card-buttons">
+      <Button text="Code" href="#" variant="secondary">
+        <Icon name="github" slot="icon" />
+      </Button>
+      <Button text="Preview" href="#" variant="secondary">
+        <Icon name="link" slot="icon" />
+      </Button>
+    </div>
+  </Card>
+</div>
+<style>
+  .project-card {
+    display: flex;
+    gap: 3rem;
+    position: relative;
+    z-index: 11;
+
+    & h2 {
+      text-align: center;
+    }
+    & .card-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+
+      @media (width >= 768px) {
+        width: 255px;
+      }
+    }
+
+    & .card-buttons {
+      padding-block-start: 1rem;
+    }
+  }
+</style>

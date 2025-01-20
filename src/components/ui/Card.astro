@@ -1,0 +1,37 @@
+---
+interface Props {
+  variant: 'primary' | 'secondary' | 'tertiary'
+}
+
+const { variant } = Astro.props
+---
+
+<div class:list=`card ${variant}`>
+  <slot />
+</div>
+<style>
+  .card {
+    border-radius: 2.25rem;
+
+    &.primary {
+      background-color: #4c5578;
+      backdrop-filter: blur(11px);
+      padding: 1rem;
+    }
+
+    &.secondary {
+      background-color: #1e1e1e;
+      display: flex;
+      gap: 1rem;
+    }
+
+    &.tertiary {
+      width: 960px;
+      background-color: #4847474d;
+      display: flex;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      gap: 2rem;
+    }
+  }
+</style>

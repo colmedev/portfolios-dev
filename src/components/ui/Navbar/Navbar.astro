@@ -1,0 +1,68 @@
+---
+import { Icon } from 'astro-icon/components'
+import Button from '../Button.astro'
+import { navItems } from './data'
+import Logo from './Logo.astro'
+---
+
+<nav class="navbar">
+  <Logo />
+  <ul class="nav-items">
+    {
+      navItems.map(({ title, href }) => (
+        <li class="nav-item">
+          <a href={href} class="nav-link">
+            {title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="nav-btn">
+    <Button text="Descargar CV" href="/cv" variant="primary">
+      <Icon name="download" slot={'icon'} />
+    </Button>
+    <Button text="LinkedIn" href="#" variant="secondary">
+      <Icon name="linkedin" slot={'icon'} />
+    </Button>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-block-end: 1px solid white;
+
+    & .nav-items {
+      display: flex;
+      gap: 2.25rem;
+
+      @media (width < 768px) {
+        content-visibility: hidden;
+      }
+
+      & .nav-item {
+        list-style: none;
+
+        & .nav-link {
+          text-decoration: none;
+          color: white;
+        }
+
+        &:active,
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+
+    & .nav-btn {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,161 @@
+---
+import Layout from '@layouts/Layout.astro'
+import OpenGraph from '@components/OpenGraph.astro'
+import Aboutme from '@components/ui/Aboutme.astro'
+import Circle from '@components/ui/Circle.astro'
+import Contact from '@components/ui/Contact.astro'
+import Experience from '@components/ui/Experience.astro'
+import Hero from '@components/ui/Hero.astro'
+import Projects from '@components/ui/Projects.astro'
+import Me from '../images/tyto.png'
+import ContributionSection from './Contributionsection.astro'
+
+const options = {
+  title: 'Boilerplate | UXCorpRangel',
+  description:
+    'Boilerplate que incluye integraciones y configuraciones enfocadas en buenas prácticas para construir sitios rápidos, accesibles y listos para producción.'
+}
+---
+
+<Layout options={options}>
+  <OpenGraph
+    title={options.title}
+    description={options.description}
+    image="/og/og.jpg"
+    slot="social-media"
+  />
+
+  <main>
+    <Hero />
+
+    <div class="container">
+      <div class="experience-title" id="experience">
+        <div>
+          <h2>Experiencia laboral</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            magnam officia tempore amet voluptas blanditiis. Corporis numquam
+            sapiente eaque magnam delectus veniam, adipisci debitis
+            reprehenderit quisquam quos! Temporibus, expedita delectus.
+          </p>
+        </div>
+
+        <div>
+          <Experience
+            open
+            current
+            company="Extendly for HighLevel"
+            startdate="Jun 2024"
+            enddate="Actual"
+            position="Desarrollador Frontend"
+            description="Creo sitios web con diseños modernos y aplicando buenas prácticas de UI/UX. También me encargo de rediseñar, optimizar el posicionamiento SEO, aumentar las medidas de seguridad y optimizar el rendimiento de velocidad de sitios web, para aumentar la taza de conversión y las visitas."
+          >
+            <ul>
+              <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+                totam magni ipsum, maiores impedit repellat illo tenetur, quo
+                veritatis sit dolorem reiciendis eos. Praesentium ducimus
+                nesciunt consequatur inventore voluptates? Quia!
+              </li>
+              <li>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptate magnam consectetur voluptates autem provident?
+                Asperiores illo ab alias in distinctio rem rerum tenetur quis
+                dolores ducimus ex, dicta excepturi cum.
+              </li>
+            </ul>
+          </Experience>
+
+          <Experience
+            company="ChatHQ Inc"
+            startdate="Feb 2022"
+            enddate="Jun 2024"
+          >
+            <span slot="line">-</span>
+          </Experience>
+
+          <Experience
+            company="Banco Financiero Internacional"
+            startdate="Sep 2019"
+            enddate="Ene 2022"
+          >
+            <span slot="line">-</span>
+          </Experience>
+
+          <Experience
+            company="Universidad de las Ciencias Informáticas"
+            startdate="Sep 2019"
+            enddate="Ene 2022"
+          >
+            <span slot="line">-</span>
+          </Experience>
+        </div>
+      </div>
+
+      <div class="project-container">
+        <div class="project-content">
+          <Circle />
+          <h2>Proyectos</h2>
+          <Projects />
+        </div>
+      </div>
+
+      <ContributionSection />
+
+      <div class="aboutme">
+        <Aboutme
+          image={Me.src}
+          title="Frase breve de ti"
+          description="Gamer apasionado. Amante de las historias de ficción. Ingeniero y desarrollador de software. Entusiasta del código abierto. Siempre intentando aprender algo nuevo. Aficionado a la fotografía."
+        />
+      </div>
+
+      <div>
+        <Contact />
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* media queries: 375px, 768px, 1024px, 1200px y 1536px*/
+  main {
+    & .container {
+      margin: 0 auto;
+    }
+    & .experience-title {
+      scroll-behavior: smooth;
+      display: flex;
+      align-items: center;
+      padding-inline: 11.5rem;
+      gap: 4.5rem;
+
+      @media (width < 768px) {
+        padding-inline: 0;
+      }
+
+      & li {
+        list-style: circle;
+        color: #a6a6a6;
+      }
+    }
+
+    & .project-container {
+      padding: 4.5rem;
+      overflow: hidden;
+
+      & .project-content {
+        position: relative;
+        background: linear-gradient(360deg, #0d122b 0%, #23337f 100%);
+        padding: 4.5rem;
+        border-radius: 1.5rem;
+        overflow: hidden;
+      }
+    }
+
+    & .aboutme {
+      display: flex;
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets'
+import Card from './Card.astro'
+
+interface Props {
+  image: string
+  title: string
+  description: string
+}
+
+const { image, title, description } = Astro.props
+---
+
+<div>
+  <div class="aboutme-card">
+    <Card variant="tertiary">
+      <Image src={image} alt={title} width={300} height={300} />
+      <div class="aboutme-card-content">
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </div>
+    </Card>
+  </div>
+</div>
+
+<style>
+  .aboutme-card {
+    padding: 2rem;
+
+    & .aboutme-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      & p {
+        color: #a6a6a6;
+      }
+    }
+  }
+</style>

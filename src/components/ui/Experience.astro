@@ -1,0 +1,96 @@
+---
+interface Props {
+  company: string
+  startdate: string
+  enddate?: string
+  position?: string
+  description?: string
+  open?: boolean
+  current?: boolean
+}
+
+const {
+  company,
+  startdate,
+  enddate,
+  current,
+  position,
+  description,
+  open = false
+} = Astro.props
+---
+
+<div class="experience">
+  <details open={open}>
+    <summary>
+      <h2 class="company-name">{company}</h2>
+      <div class="date">
+        <p>
+          {startdate}
+        </p>
+        <slot name="line" />
+        <p>
+          <span class:list={current ? 'current' : ''}>{enddate}</span>
+        </p>
+      </div>
+    </summary>
+
+    <p class="position">{position}</p>
+    <p class="description">
+      {description}
+    </p>
+    <slot />
+  </details>
+</div>
+
+<style scoped>
+  .experience {
+    display: flex;
+
+    & details {
+      width: 100%;
+    }
+
+    details:is([open]) summary {
+      .company-name {
+        text-decoration: underline #23337f;
+      }
+    }
+
+    & summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+
+      & .company-name {
+        font-weight: lighter;
+        text-wrap: wrap;
+      }
+
+      & .date {
+        color: #a6a6a6;
+        display: inline-flex;
+        align-items: center;
+        text-wrap: nowrap;
+        gap: 1rem;
+
+        & .current {
+          background-color: #23337f;
+          color: white;
+          font-weight: bold;
+          border-radius: 2.25rem;
+          padding: 0.25rem 0.75rem;
+        }
+      }
+    }
+
+    & .position {
+      font-weight: bold;
+    }
+
+    & .description {
+      color: #a6a6a6;
+    }
+  }
+</style>

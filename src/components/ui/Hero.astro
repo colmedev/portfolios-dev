@@ -1,0 +1,112 @@
+---
+import { Icon } from 'astro-icon/components'
+import Badges from './Badges.astro'
+import Burgerbutton from './Burgerbutton.astro'
+import Button from './Button.astro'
+import Moreinfo from './Moreinfo.astro'
+---
+
+<div class="hero-container">
+  <div class="hero">
+    <Badges variant="primary" text="Disponible para trabajar" />
+
+    <h1>Hola soy Jaime Gutiérrez</h1>
+
+    <p>
+      Ingeniero de software con 5+ años de experiencia, <span
+        >especializado en React y Node.js.</span
+      >
+    </p>
+    <p>Innovando y creando soluciones efectivas desde Uruguay</p>
+
+    <Button
+      variant="primary"
+      text="Descargar CV"
+      href="Aqui colocar el link de descarga del CV"
+    />
+
+    <Button text="LinkedIn" href="#" variant="secondary">
+      <Icon name="linkedin" slot={'icon'} />
+    </Button>
+
+    <div class="more-info">
+      <Moreinfo href="#experience" />
+    </div>
+    <div class="social-media">
+      <Burgerbutton />
+    </div>
+  </div>
+</div>
+
+<!-- <div class="circles">
+</div> -->
+
+<style>
+  .hero-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+
+    & .hero {
+      position: relative;
+      z-index: 2;
+      padding: 5rem;
+
+      & .more-info {
+        padding-block-start: 5rem;
+      }
+
+      & .social-media {
+        display: flex;
+        justify-content: end;
+        padding-block-start: 3rem;
+        padding-inline-end: 5rem;
+      }
+
+      &::before {
+        content: '';
+        z-index: 1;
+        background: radial-gradient(
+          48.42% 48.42% at 49.41% 51.58%,
+          #353869 1%,
+          #0000 100%
+        );
+        width: 715px;
+        height: 545px;
+        position: absolute;
+        right: 771px;
+        top: 338px;
+      }
+    }
+
+    &::after {
+      content: '';
+      z-index: 1;
+      background: radial-gradient(
+        48.42% 48.42% at 49.41% 51.58%,
+        #23337f 1%,
+        #0000 100%
+      );
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      left: 1133px;
+      bottom: 27px;
+    }
+
+    &::before {
+      content: '';
+      z-index: 1;
+      background: radial-gradient(
+        48.42% 48.42% at 49.41% 51.58%,
+        #134d5b 1%,
+        #000 100%
+      );
+      width: 800px;
+      height: 500px;
+      position: absolute;
+      top: 297px;
+      left: 588px;
+    }
+  }
+</style>

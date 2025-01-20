@@ -1,0 +1,26 @@
+---
+import contribution from '../../../images/contribution.png'
+import Carousel from '../Carousel.astro'
+import CardContribution from './CardContribution.astro'
+---
+
+<Carousel>
+  <CardContribution
+    image={contribution.src}
+    title="Titutlo del proyecto"
+    text="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, corrupti similique. Nostrum odio provident quibusdam dolores animi ipsa dolore porro quisquam commodi reiciendis, hic, corporis reprehenderit enim mollitia, et harum?"
+    slot="first-slide"
+  />
+  <CardContribution
+    image={contribution.src}
+    title="Titutlo del proyecto"
+    text="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, corrupti similique. Nostrum odio provident quibusdam dolores animi ipsa dolore porro quisquam commodi reiciendis, hic, corporis reprehenderit enim mollitia, et harum?"
+    slot="second-slide"
+  />
+  <CardContribution
+    image={contribution.src}
+    title="Titutlo del proyecto"
+    text="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, corrupti similique. Nostrum odio provident quibusdam dolores animi ipsa dolore porro quisquam commodi reiciendis, hic, corporis reprehenderit enim mollitia, et harum?"
+    slot="third-slide"
+  />
+</Carousel>

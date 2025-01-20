@@ -1,0 +1,113 @@
+---
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import Badges from '../Badges.astro'
+import Button from '../Button.astro'
+import Card from '../Card.astro'
+
+const badges = [
+  {
+    text: 'HTML',
+    icon: 'html'
+  },
+  {
+    text: 'CSS',
+    icon: 'css'
+  },
+  {
+    text: 'Javascript',
+    icon: 'javascript'
+  },
+  {
+    text: 'PHP',
+    icon: 'php'
+  },
+  {
+    text: 'Wordpress',
+    icon: 'wordpress'
+  }
+]
+const buttons = [
+  {
+    text: 'Code',
+    icon: 'github',
+    slot: 'icon'
+  },
+  {
+    text: 'Preview',
+    icon: 'link',
+    slot: 'icon'
+  }
+]
+
+interface Props {
+  image: string
+  title: string
+  text: string
+}
+
+const { image, title, text } = Astro.props
+---
+
+<Card variant="secondary">
+  <div class="contribution-content">
+    <div class="image-contribution">
+      <Image src={image} alt={title} width={300} height={300} />
+    </div>
+    <div class="info-contribution">
+      <h3>{title}</h3>
+      <p>{text}</p>
+
+      <div class="badges-contribution">
+        {
+          badges.map(({ text, icon }) => (
+            <Badges variant="secondary" text={text}>
+              <Icon name={icon} slot="icon" size={24} />
+            </Badges>
+          ))
+        }
+      </div>
+      <div class="button-contribution">
+        {
+          buttons.map(({ text, icon, slot }) => (
+            <Button variant="secondary" text={text} href="#">
+              <Icon name={icon} slot={slot} />
+            </Button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Card>
+<style>
+  .contribution-content {
+    & .info-contribution {
+      & h3,
+      p {
+        margin: 0;
+      }
+      & h3 {
+        padding-block: 1rem;
+      }
+
+      & p {
+        padding-block-end: 0.5rem;
+      }
+    }
+    display: flex;
+    & img {
+      width: 600px;
+      padding-inline: 1rem;
+      padding-block: 3rem;
+    }
+    & .badges-contribution {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    & .button-contribution {
+      padding-block: 1rem;
+    }
+  }
+</style>

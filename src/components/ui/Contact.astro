@@ -1,0 +1,88 @@
+---
+import { Icon } from 'astro-icon/components'
+import Button from './Button.astro'
+---
+
+<div class="contact-container">
+  <div class="contact">
+    <h1>¿Listo para dar vida a tus ideas?</h1>
+    <p>Puedo impulsar tu proyecto o formar parte de tu equipo</p>
+    <div>
+      <Button
+        variant="primary"
+        href="Aqui colocar el link de contacto"
+        text="Contactame"
+      />
+      <Button
+        variant="secondary"
+        href="Aqui colocar el link de contacto"
+        text="LinkedIn"
+      >
+        <Icon name="linkedin" slot={'icon'} />
+      </Button>
+    </div>
+  </div>
+
+  <div class="circle"></div>
+</div>
+
+<style>
+  .contact-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+    .contact {
+      display: flex;
+      flex-direction: column;
+      padding: 4.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    &::after {
+      bottom: 0;
+      content: '';
+      z-index: 1;
+      background: radial-gradient(
+        48.42% 48.42% at 49.41% 51.58%,
+        #353869 1%,
+        #0000 100%
+      );
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      left: -177px;
+    }
+
+    &::before {
+      top: 5px;
+      content: '';
+      z-index: 1;
+      background: radial-gradient(
+        48.42% 48.42% at 49.41% 51.58%,
+        #134d5b 1%,
+        #000 100%
+      );
+      width: 1180px;
+      height: 500px;
+      position: absolute;
+      left: 0px;
+    }
+
+    & .circle {
+      top: 5px;
+      content: '';
+      z-index: 1;
+      background: radial-gradient(
+        48.42% 48.42% at 49.41% 51.58%,
+        #23337f 1%,
+        #000 100%
+      );
+      width: 500px;
+      height: 550px;
+      position: absolute;
+      top: -66px;
+      right: -347px;
+    }
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  text: string
+  variant?: 'primary' | 'secondary' | 'tertiary'
+}
+
+const { text, variant } = Astro.props
+---
+
+<span class:list=`badge ${variant}`>
+  <slot name="icon" />
+  {text}
+</span>
+
+<style>
+  .badge {
+    padding: 0.5rem 1rem;
+    border-radius: 2.25rem;
+
+    &.primary,
+    &.secondary {
+      background-color: #1e1e1e;
+    }
+
+    &.primary {
+      border: 1px solid #fff;
+    }
+
+    &.tertiary {
+      background-color: transparent;
+    }
+
+    &.secondary,
+    &.tertiary {
+      border: 1px solid #353869;
+    }
+  }
+</style>
