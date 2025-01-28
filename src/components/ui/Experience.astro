@@ -43,9 +43,13 @@ const {
   </details>
 </div>
 
-<style scoped>
+<style>
   .experience {
     display: flex;
+
+    @media (width < 768px) {
+      padding-inline: 4rem;
+    }
 
     & details {
       width: 100%;

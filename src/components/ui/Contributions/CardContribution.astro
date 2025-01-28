@@ -81,6 +81,12 @@ const { image, title, text } = Astro.props
 </Card>
 <style>
   .contribution-content {
+    display: flex;
+
+    @media (width < 768px) {
+      flex-direction: column;
+    }
+
     & .info-contribution {
       & h3,
       p {
@@ -94,11 +100,14 @@ const { image, title, text } = Astro.props
         padding-block-end: 0.5rem;
       }
     }
-    display: flex;
     & img {
       width: 600px;
       padding-inline: 1rem;
       padding-block: 3rem;
+
+      @media (width < 768px) {
+        width: 100px;
+      }
     }
     & .badges-contribution {
       display: flex;

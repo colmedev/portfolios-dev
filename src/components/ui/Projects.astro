@@ -109,6 +109,10 @@ const badges = [
     position: relative;
     z-index: 11;
 
+    @media (width < 768px) {
+      flex-direction: column;
+    }
+
     & h2 {
       text-align: center;
     }

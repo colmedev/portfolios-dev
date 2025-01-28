@@ -17,8 +17,13 @@ import Contribution from '@components/ui/Contributions/Contribution.astro'
 <style>
   .contributions {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding-inline: 2rem;
     align-items: center;
+
+    @media (width > 768px) {
+      flex-direction: row;
+    }
   }
 </style>

@@ -38,9 +38,6 @@ import Moreinfo from './Moreinfo.astro'
   </div>
 </div>
 
-<!-- <div class="circles">
-</div> -->
-
 <style>
   .hero-container {
     position: relative;
@@ -52,6 +49,11 @@ import Moreinfo from './Moreinfo.astro'
       z-index: 2;
       padding: 5rem;
 
+      @media (width < 768px) {
+        padding-block: 3rem;
+        padding-inline: 0.5rem;
+      }
+
       & .more-info {
         padding-block-start: 5rem;
       }
@@ -61,6 +63,10 @@ import Moreinfo from './Moreinfo.astro'
         justify-content: end;
         padding-block-start: 3rem;
         padding-inline-end: 5rem;
+
+        @media (width < 768px) {
+          padding-block: 5rem;
+        }
       }
 
       &::before {
