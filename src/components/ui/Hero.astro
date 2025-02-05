@@ -7,6 +7,7 @@ import Moreinfo from './Moreinfo.astro'
 ---
 
 <div class="hero-container">
+  <div class="gradient"></div>
   <div class="hero">
     <Badges variant="primary" text="Disponible para trabajar" />
 
@@ -68,51 +69,34 @@ import Moreinfo from './Moreinfo.astro'
           padding-block: 5rem;
         }
       }
-
-      &::before {
-        content: '';
-        z-index: 1;
-        background: radial-gradient(
-          48.42% 48.42% at 49.41% 51.58%,
-          #353869 1%,
-          #0000 100%
-        );
-        width: 715px;
-        height: 545px;
-        position: absolute;
-        right: 771px;
-        top: 338px;
-      }
     }
 
-    &::after {
-      content: '';
-      z-index: 1;
-      background: radial-gradient(
-        48.42% 48.42% at 49.41% 51.58%,
-        #23337f 1%,
-        #0000 100%
-      );
-      width: 500px;
-      height: 500px;
+    & .gradient {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 650px;
+      height: 650px;
+      border-radius: 100%;
+      background-image: linear-gradient(#1100ff 10%, #ff00f2);
+      filter: blur(250px);
+      transition: all 450ms ease-out;
       position: absolute;
-      left: 1133px;
-      bottom: 27px;
-    }
-
-    &::before {
-      content: '';
+      pointer-events: none;
+      left: 0;
+      top: 0;
+      transform: translate(calc(-50% + 15px), -50%);
       z-index: 1;
-      background: radial-gradient(
-        48.42% 48.42% at 49.41% 51.58%,
-        #134d5b 1%,
-        #000 100%
-      );
-      width: 800px;
-      height: 500px;
-      position: absolute;
-      top: 297px;
-      left: 588px;
     }
   }
 </style>
+
+<script>
+  const gradient = document.querySelector<HTMLElement>('.gradient')
+
+  document.addEventListener('mousemove', function (e) {
+    const x = e.clientX
+    const y = e.clientY
+    gradient.style.transform = `translate3d(calc(${x}px - 50%), calc(${y}px - 50%), 0)`
+  })
+</script>
