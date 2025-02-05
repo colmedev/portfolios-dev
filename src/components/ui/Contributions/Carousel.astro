@@ -1,0 +1,26 @@
+<section class="embla">
+  <div class="embla-viewport">
+    <div class="embla-container">
+      <div class="embla-slide">
+        <div class="embla-slide-number">
+          <slot name="first-slide" />
+        </div>
+      </div>
+      <div class="embla-slide">
+        <div class="embla-slide-number">
+          <slot name="second-slide" />
+        </div>
+      </div>
+      <div class="embla-slide">
+        <div class="embla-slide-number">
+          <slot name="third-slide" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="embla-controls">
+  <div class="embla-dots"></div>
+</div>
+<script src="../../../scripts/Carousel/index.js"></script>

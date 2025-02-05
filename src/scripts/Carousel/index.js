@@ -1,16 +1,17 @@
 import EmblaCarousel from 'embla-carousel'
 import { addDotBtnsAndClickHandlers } from './carousel-dot'
+import '../../styles/index.css'
+import Autoplay from 'embla-carousel-autoplay'
 
 const OPTIONS = {
   dragFree: true,
-  loop: true,
-  autoplay: { delay: 3000 }
+  loop: true
 }
 const emblaNode = document.querySelector('.embla')
 const viewportNode = emblaNode.querySelector('.embla-viewport')
 const dotsNode = emblaNode.querySelector('.embla-dots')
 
-const emblaApi = EmblaCarousel(viewportNode, OPTIONS)
+const emblaApi = EmblaCarousel(viewportNode, OPTIONS, [Autoplay()])
 
 const onNavButtonClick = (emblaApi) => {
   const autoplay = emblaApi?.plugins()?.autoplay

@@ -8,7 +8,7 @@ export const addDotBtnsAndClickHandlers = (
   const addDotBtnsWithClickHandlers = () => {
     dotsNode.innerHTML = emblaApi
       .scrollSnapList()
-      .map(() => '<button class="embla-dot" type="button"></button>')
+      .map(() => '<button class="embla__dot" type="button"></button>')
       .join('')
 
     const scrollTo = (index) => {
@@ -16,7 +16,7 @@ export const addDotBtnsAndClickHandlers = (
       if (onButtonClick) onButtonClick(emblaApi)
     }
 
-    dotNodes = Array.from(dotsNode.querySelectorAll('.embla-dot'))
+    dotNodes = Array.from(dotsNode.querySelectorAll('.embla__dot'))
     dotNodes.forEach((dotNode, index) => {
       dotNode.addEventListener('click', () => scrollTo(index), false)
     })
@@ -25,8 +25,8 @@ export const addDotBtnsAndClickHandlers = (
   const toggleDotBtnsActive = () => {
     const previous = emblaApi.previousScrollSnap()
     const selected = emblaApi.selectedScrollSnap()
-    dotNodes[previous].classList.remove('embla-dot-selected')
-    dotNodes[selected].classList.add('embla-dot-selected')
+    dotNodes[previous].classList.remove('embla__dot--selected')
+    dotNodes[selected].classList.add('embla__dot--selected')
   }
 
   emblaApi
