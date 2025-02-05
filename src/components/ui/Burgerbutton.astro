@@ -3,62 +3,90 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <div class="circle-menu">
+  <div class="overlay"></div>
   <div class="menu circle">
     <div class="icon">
-      <Icon name="burger" size={24} />
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
 
   <span class="circle">
-    <Icon name="twitter" size={24} />
+    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
+      <Icon name="e-mail" size={56} />
+    </a>
   </span>
 
   <span class="circle">
-    <Icon name="facebook" size={24} />
+    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
+      <Icon name="linkedin" size={56} />
+    </a>
   </span>
 
   <span class="circle">
-    <Icon name="instagram" size={24} />
+    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
+      <Icon name="instagram" size={56} />
+    </a>
   </span>
 
   <span class="circle">
-    <Icon name="mail" size={24} />
+    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
+      <Icon name="x" size={56} />
+    </a>
   </span>
 
   <span class="circle">
-    <Icon name="linkedin" size={24} />
-  </span>
-
-  <span class="circle">
-    <Icon name="github" size={24} />
+    <a class="social-link" href="/" rel="noopener noreferrer" target="_blank">
+      <Icon name="github" size={56} />
+    </a>
   </span>
 </div>
+
+<script>
+  const menu = document.querySelector<HTMLDivElement>('.circle-menu')
+  const items = menu?.querySelectorAll<HTMLSpanElement>('span.circle') ?? []
+
+  menu?.style?.setProperty('--max-items', `${items.length}`)
+
+  document
+    .querySelector('.menu')
+    ?.addEventListener('click', () => menu?.classList?.toggle('open'))
+  items.forEach((el, index) => el.style.setProperty('--item', `${index}`))
+</script>
+
 <style>
   :root {
-    --body-color: #010c15;
-
-    --menu-size: 50px;
+    --menu-size: 60px;
     --menu-icon-size: calc(var(--menu-size) / 2);
-    --menu-color-bg: #26d0ce;
+    --menu-color-bg: var(--amber-500);
     --menu-color-fg: var(--body-color);
 
     --item-size: calc(var(--menu-size) * 0.9);
-    --item-color-bg: #267dd0;
-    --item-color-fg: #fff;
-    --item-distance: calc(var(--item-size) * 1.5);
+    --item-color-bg: var(--black);
+    --item-color-fg: var(--white);
+    --item-distance: calc(var(--item-size) * 1.2);
     --item-timing: ease-in-out;
+  }
 
-    color-scheme: dark;
+  .social-link {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .circle-menu {
-    position: relative;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
     display: grid;
     place-items: center;
 
     .circle {
       border-radius: 50%;
-      box-shadow: 0 6px 50px 0 rgb(255 255 255 / 0.2);
+      box-shadow: 0 6px 50px 0 #fbbf2480; /* Nuevo valor de brillo */
     }
 
     .menu {
@@ -68,22 +96,18 @@ import { Icon } from 'astro-icon/components'
       justify-content: center;
       width: var(--menu-size);
       height: var(--menu-size);
-      color: var(--menu-color-fg);
-      background: var(--menu-color-bg);
+      color: var(--black);
+      background-color: var(--menu-color-bg);
       transition:
         scale 0.5s,
         background 0.3s;
       position: absolute;
-      z-index: 1;
-
-      &:hover {
-        background: #26d079;
-        color: #fff;
-      }
+      z-index: 3;
 
       & .icon {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        justify-content: space-evenly;
         width: var(--menu-icon-size);
         height: var(--menu-icon-size);
 
@@ -107,10 +131,32 @@ import { Icon } from 'astro-icon/components'
       }
     }
 
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(from var(--black) r g b / 0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 1;
+    }
+
+    @media (max-width: 393px) {
+      .overlay {
+        backdrop-filter: blur(5px);
+      }
+    }
+
+    &.open .overlay {
+      opacity: 1;
+      pointer-events: all;
+    }
+
     & > span {
-      --angle: calc((var(--item) / var(--max-items)) * (2 * 3.14));
-      --x: calc(cos(var(--angle)) * var(--item-distance));
-      --y: calc(sin(var(--angle)) * var(--item-distance));
+      --y: calc(var(--item) * var(--item-distance) + 60px); /* Elevar iconos */
       --delay: calc(var(--item) * 0.1s);
 
       cursor: pointer;
@@ -119,14 +165,16 @@ import { Icon } from 'astro-icon/components'
       width: var(--item-size);
       height: var(--item-size);
       color: var(--item-color-fg);
-      background: var(--item-color-bg);
-      transform: scale(0) translate(0, 0);
+      background-color: var(--item-color-bg);
+      border: 1px solid var(--menu-color-bg);
+      transform: scale(0) translateY(0);
       transition:
         transform 0.3s var(--item-timing) var(--delay),
         background 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 2;
 
       & svg {
         position: relative;
@@ -136,13 +184,13 @@ import { Icon } from 'astro-icon/components'
       }
 
       &:hover {
-        background: #d07926;
+        background-color: var(--menu-color-bg); /* Diferente tono de dorado */
       }
     }
 
     &.open {
       & .menu {
-        scale: 0.6;
+        scale: 0.8;
 
         & span {
           &:nth-child(1) {
@@ -161,23 +209,8 @@ import { Icon } from 'astro-icon/components'
 
       & > span {
         pointer-events: all;
-        transform: scale(1) translate(var(--x), var(--y));
+        transform: scale(1) translateY(calc(-1 * var(--y)));
       }
     }
   }
 </style>
-
-<script>
-  const menu = document.querySelector('.circle-menu')
-  const items = menu?.querySelectorAll('& > span')
-
-  menu.style.setProperty('--max-items', items.length)
-
-  document.querySelector('.menu').addEventListener('click', () => {
-    menu.classList.toggle('open')
-  })
-
-  items.forEach((el, index) => {
-    el.style.setProperty('--item', index)
-  })
-</script>
