@@ -1,26 +1,85 @@
 <section class="embla">
-  <div class="embla-viewport">
-    <div class="embla-container">
-      <div class="embla-slide">
-        <div class="embla-slide-number">
-          <slot name="first-slide" />
+  <div class="embla__viewport">
+    <div class="embla__container">
+      <div class="embla__slide">
+        <div class="embla__slide__number">
+          <div class="info">
+            <slot name="first-slide" />
+          </div>
         </div>
       </div>
-      <div class="embla-slide">
-        <div class="embla-slide-number">
-          <slot name="second-slide" />
+      <div class="embla__slide">
+        <div class="embla__slide__number">
+          <div class="info">
+            <slot name="second-slide" />
+          </div>
         </div>
       </div>
-      <div class="embla-slide">
-        <div class="embla-slide-number">
-          <slot name="third-slide" />
+      <div class="embla__slide">
+        <div class="embla__slide__number">
+          <div class="info">
+            <slot name="third-slide" />
+          </div>
         </div>
       </div>
+      <!-- <div class="embla__slide">
+        <div class="embla__slide__number">
+          <div class="info">
+            <h3>titulo del proyecto</h3>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea,
+              corrupti similique. Nostrum odio provident quibusdam dolores animi
+              ipsa dolore porro quisquam commodi reiciendis, hic, corporis
+              reprehenderit enim mollitia, et harum?
+            </p>
+
+            <div class="badges">
+              <span>html</span>
+              <span>html</span>
+              <span>html</span>
+              <span>html</span>
+            </div>
+
+            <div class="buttons">
+              <button>github</button>
+              <button>preview</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="embla__slide">
+        <div class="embla__slide__number">
+          <div class="info">
+            <h3>titulo del proyecto</h3>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea,
+              corrupti similique. Nostrum odio provident quibusdam dolores animi
+              ipsa dolore porro quisquam commodi reiciendis, hic, corporis
+              reprehenderit enim mollitia, et harum?
+            </p>
+
+            <div class="badges">
+              <span>html</span>
+              <span>html</span>
+              <span>html</span>
+              <span>html</span>
+            </div>
+
+            <div class="buttons">
+              <button>github</button>
+              <button>preview</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
     </div>
+  </div>
+
+  <div class="embla__controls">
+    <div class="embla__dots"></div>
   </div>
 </section>
 
-<div class="embla-controls">
-  <div class="embla-dots"></div>
-</div>
+<style></style>
+
 <script src="../../../scripts/Carousel/index.js"></script>
