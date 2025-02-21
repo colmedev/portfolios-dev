@@ -104,6 +104,10 @@ const { image, title, text } = Astro.props
       p,
       span {
         font-size: 1rem;
+
+        @media (width < 768px) {
+          font-size: 0.8rem;
+        }
       }
     }
     & img {
@@ -112,7 +116,7 @@ const { image, title, text } = Astro.props
       padding-block: 3rem;
 
       @media (width < 768px) {
-        width: 100px;
+        content-visibility: hidden;
       }
     }
     & .badges-contribution {

@@ -17,6 +17,10 @@ const { text, variant } = Astro.props
     padding: 0.5rem 1rem;
     border-radius: 2.25rem;
 
+    @media (width < 768px) {
+      font-size: 0.8rem;
+    }
+
     &.primary,
     &.secondary {
       background-color: #1e1e1e;
